@@ -62,6 +62,7 @@ class MoneyManager extends Component {
       }),
     )
   }
+
   getAmounts = () => {
     const {TransactionsList} = this.state
     const TransactionAmount = TransactionsList.map(each => {
@@ -77,7 +78,6 @@ class MoneyManager extends Component {
       return TransactionAmount
     })
   }
-
 
   render() {
     const {
@@ -152,7 +152,7 @@ class MoneyManager extends Component {
                 <p>Amount</p>
                 <p>Type</p>
               </div>
-
+              <h1 className="head">History</h1>
               {TransactionsList.map(each => (
                 <TransactionItem TransactionDetails={each} key={each.id} />
               ))}
@@ -163,5 +163,8 @@ class MoneyManager extends Component {
     )
   }
 }
+
+
+
 
 export default MoneyManager
