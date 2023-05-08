@@ -62,6 +62,22 @@ class MoneyManager extends Component {
       }),
     )
   }
+  getAmounts = () => {
+    const {TransactionsList} = this.state
+    const TransactionAmount = TransactionsList.map(each => {
+      if (each.type === 'Expenses') {
+        this.setState(prevState => ({
+          Expenses: prevState.Expenses + parseInt(each.amount),
+        }))
+      } else if (each.type === 'Income') {
+        this.setState(prevState => ({
+          Income: prevState.Income + parseInt(each.amount),
+        }))
+      }
+      return TransactionAmount
+    })
+  }
+
 
   render() {
     const {
@@ -124,7 +140,7 @@ class MoneyManager extends Component {
                   </option>
                 ))}
               </select>
-              <button type="submit" onClick={this.expensesAmount}>
+              <button type="submit" onClick={this.getAmounts}>
                 Add
               </button>
             </form>
