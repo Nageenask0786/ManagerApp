@@ -12,9 +12,9 @@ const MoneyDetails = props => {
           className="image"
         />
         <div>
-          <h1 className="head">Your Balance</h1>
+          <p className="head">Your Balance</p>
 
-          <p>Rs {balance}</p>
+          <p data-testid="balanceAmount">Rs {balance}</p>
         </div>
       </div>
       <div className="card2">
@@ -24,9 +24,9 @@ const MoneyDetails = props => {
           className="image"
         />
         <div>
-          <h1 className="head">Income</h1>
+          <p className="head">Your Income</p>
 
-          <p>Rs {income}</p>
+          <p data-testid="incomeAmount">Rs {income}</p>
         </div>
       </div>
       <div className="card3">
@@ -36,13 +36,15 @@ const MoneyDetails = props => {
           className="image"
         />
         <div>
-          <h1 className="head">Expenses</h1>
+          <p className="head">Your Expenses</p>
 
-          <p>Rs {expenses}</p>
+          <p data-testid="expensesAmount">Rs {expenses}</p>
         </div>
       </div>
     </div>
   )
 }
+
+
 
 export default MoneyDetails
