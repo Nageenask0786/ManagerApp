@@ -54,31 +54,33 @@ class MoneyManager extends Component {
       amount,
       type,
     }
-    this.setState(prevState =>
-      this.setState({
-        TransactionsList: [...prevState.TransactionsList, newTransaction],
-        title: '',
-        amount: '',
-      }),
-    )
+    this.setState(prevState => ({
+      TransactionsList: [...prevState.TransactionsList, newTransaction],
+      title: '',
+      amount: '',
+    }))
+
   }
 
   getAmounts = () => {
     const {TransactionsList} = this.state
-    const TransactionAmount = TransactionsList.map(each => {
+    let TransactionAmount
+    TransactionsList.map(each => {
       if (each.type === 'Expenses') {
-        this.setState(prevState => ({
+        TransactionAmount = this.setState(prevState => ({
           Expenses: prevState.Expenses + parseInt(each.amount),
         }))
       } else if (each.type === 'Income') {
-        this.setState(prevState => ({
+        TransactionAmount = this.setState(prevState => ({
           Income: prevState.Income + parseInt(each.amount),
         }))
       }
+
       return TransactionAmount
     })
   }
 
+  
   render() {
     const {
       yourbalance,
@@ -154,7 +156,7 @@ class MoneyManager extends Component {
               </div>
               <h1 className="head">History</h1>
               {TransactionsList.map(each => (
-                <TransactionItem TransactionDetails={each} key={each.id} />
+                <TransactionItem transactionDetails={each} key={each.id} />
               ))}
             </ul>
           </div>
